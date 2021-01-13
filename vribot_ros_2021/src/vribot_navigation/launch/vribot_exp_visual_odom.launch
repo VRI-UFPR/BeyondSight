@@ -1,0 +1,133 @@
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find vribot_description)/urdf/vribot.xacro'"/>
+
+  <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_ros/rgbd_sync" output="screen">
+    <remap from="rgb/image" to="/camera/rgb/image_raw"/>
+    <remap from="depth/image" to="/camera/depth/image_raw"/>
+    <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
+    <remap from="rgbd_image" to="/rgbd_image"/>
+    <!-- output -->
+
+    <!-- Should be true for not synchronized camera topics (e.g., false for kinectv2, zed, realsense, true for xtion, kinect360)-->
+    <param name="approx_sync" value="true"/>
+  </node>
+
+  <!-- FOR SIMULATION -->
+  <node name="laser_to_pointcloud2" pkg="laser_to_pointcloud2" type="laser_to_pointcloud2"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find vribot_description)/urdf/vribot.xacro'"/>
+  </node>
+
+  <!-- Arguments -->
+  <arg name="open_rviz" default="true"/>
+  <arg name="rtabmapviz" default="true"/>
+  <arg name="move_forward_only" default="false"/>
+
+  <arg name="with_camera" default="true"/>
+  <arg name="localization" default="false"/>
+  <arg name="database_path" default="$(find vribot_navigation)/maps/rtabmap.db"/>
+  <arg if="$(arg localization)" name="rtabmap_args" default=""/>
+  <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
+
+  <!-- ODOMETRY MAIN ARGUMENTS:
+          -"strategy"        : Strategy: 0=Frame-to-Map 1=Frame-to-Frame
+          -"feature"         : Feature type: 0=SURF 1=SIFT 2=ORB 3=FAST/FREAK 4=FAST/BRIEF 5=GFTT/FREAK 6=GFTT/BRIEF 7=BRISK
+          -"nn"              : Nearest neighbor strategy : 0=Linear, 1=FLANN_KDTREE, 2=FLANN_LSH, 3=BRUTEFORCE
+                               Set to 1 for float descriptor like SIFT/SURF
+                               Set to 3 for binary descriptor like ORB/FREAK/BRIEF/BRISK
+          -"max_depth"       : Maximum features depth (m)
+          -"min_inliers"     : Minimum visual correspondences to accept a transformation (m)
+          -"inlier_distance" : RANSAC maximum inliers distance (m)
+          -"local_map"       : Local map size: number of unique features to keep track
+          -"odom_info_data"  : Fill odometry info messages with inliers/outliers data.
+      -->
+ <!-- <arg name="strategy"        default="2" />
+ <arg name="feature"         default="6" />
+ <arg name="nn"              default="3" />
+ <arg name="max_depth"       default="4.0" />
+ <arg name="min_inliers"     default="20" />
+ <arg name="inlier_distance" default="0.02" />
+ <arg name="local_map"       default="1000" />
+ <arg name="odom_info_data"  default="true" />
+ <arg name="wait_for_transform"  default="true" /> -->
+
+  <!-- Visual odometry -->
+  <!-- RGB-D Odometry -->
+
+
+
+
+  <group ns="rtabmap">
+    <node pkg="rtabmap_ros" type="rgbd_odometry" name="rgbd_odometry" output="screen">
+        <param name="subscribe_rgbd" type="bool"   value="true"/>
+        <param name="frame_id"       type="string" value="base_link"/>
+        <remap from="rgbd_image" to="/rgbd_image"/>
+
+        <remap from="odom" to="/odom"/>
+    </node>
+
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="$(arg rtabmap_args)">
+      <param name="frame_id" type="string" value="base_link"/>
+
+      <param name="subscribe_depth" type="bool" value="false"/>
+      <param name="subscribe_rgb" type="bool" value="false"/>
+      <param name="subscribe_rgbd" type="bool" value="true"/>
+      <param name="subscribe_scan" type="bool" value="false"/>
+
+      <!-- inputs -->
+      <remap from="scan" to="/scan"/>
+      <remap from="odom" to="/odom"/>
+      <remap from="rgbd_image" to="/rgbd_image"/>
+
+      <!-- output -->
+      <remap from="grid_map" to="/map"/>
+
+      <param name="queue_size"  type="int"  value="10"/>
+      <param name="approx_sync" type="bool" value="false"/>
+
+      <!-- RTAB-Map's parameters -->
+      <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
+      <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
+      <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
+
+      <!-- <param name="Reg/Strategy" type="string" value="1"/>
+      <param name="Reg/Force3DoF" type="string" value="true"/>
+      <param name="GridGlobal/MinSize" type="string" value="20"/> -->
+
+      <!-- localization mode -->
+      <param if="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="false"/>
+      <param unless="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="true"/>
+    </node>
+
+    <!-- visualization with rtabmapviz -->
+    <node if="$(arg rtabmapviz)" pkg="rtabmap_ros" type="rtabmapviz" name="rtabmapviz" args="-d $(find rtabmap_ros)/launch/config/rgbd_gui.ini" output="screen">
+      <param name="database_path" type="string" value="$(arg database_path)"/>
+      <param name="subscribe_depth" type="bool" value="false"/>
+      <param name="subscribe_rgbd" type="bool" value="true"/>
+      <param name="subscribe_scan" type="bool" value="true"/>
+      <param name="subscribe_odom" type="bool" value="true"/>
+      <param name="frame_id" type="string" value="base_link"/>
+      <param name="approx_sync" type="bool" value="true"/>
+
+      <remap from="odom" to="/odom"/>
+      <remap from="scan" to="/scan"/>
+      <remap from="rgbd_image" to="/rgbd_image"/>
+    </node>
+  </group>
+
+    <!-- move_base -->
+    <include file="$(find vribot_navigation)/launch/move_base.launch"></include>
+
+    <!-- pioneer_controller_spin_recover -->
+    <include file="$(find pioneer_ros)/launch/pioneer_controller_spin_recover.launch"></include>
+
+    <!-- rviz -->
+    <group if="$(arg open_rviz)">
+      <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find vribot_description)/launch/basic_with_gt.rviz">
+        <remap from="odom" to="/odom"/>
+      </node>
+    </group>
+
+  </launch>

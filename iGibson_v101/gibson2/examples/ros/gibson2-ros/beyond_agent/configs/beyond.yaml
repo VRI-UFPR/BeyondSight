@@ -1,0 +1,27 @@
+BEYOND:
+  DEVICE: "cuda"
+  GLOBAL_POLICY:
+    #30 COCO plus 2 Aux from trajectory
+    N_CLASSES: 30
+    MAP_SIZE_METERS: 51.2
+    MAP_CELL_SIZE: 0.10
+    INPUT_SHAPE: [32,512,512]
+    HIDDEN_SIZE: 512
+    LOAD_CHECKPOINT: True
+    CHECKPOINT: "/beyond_agent/checkpoints/GLOBAL_POLICY_409999_rollout_iterations_best.pt"
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_with_sseg_oracle_habitat_challenge09-12-2020_11-15-57/mp3d_GLOBAL_POLICY_16384_rollout_iterations.pt"
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_with_sseg_oracle_habitat_challenge09-12-2020_11-15-57/mp3d_GLOBAL_POLICY_32768_rollout_iterations.pt"
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_with_sseg_oracle_habitat_challenge09-12-2020_11-15-57/mp3d_GLOBAL_POLICY_180224_rollout_iterations.pt"
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_with_sseg_oracle_habitat_challenge09-12-2020_11-15-57/{REPLACE}.pt"
+    USE_MATTERPORT_TO_GIBSON: True
+    # USE_MATTERPORT_TO_GIBSON: False
+  PLANNER:
+    LOAD_CHECKPOINT: True
+    CHECKPOINT: "/beyond_agent/checkpoints/ddppo_pointnav_habitat2020_challenge_baseline_v1.pth"
+  SSEG:
+    DISPLAY_LINCOMB: False
+    SCORE_THRESHOLD: 0.15
+    CROP_MASK: True
+    BINARIZE_MASKS: False
+    LOAD_CHECKPOINT: True
+    CHECKPOINT: "/beyond_agent/checkpoints/yolact_plus_resnet50_54_800000.pth"

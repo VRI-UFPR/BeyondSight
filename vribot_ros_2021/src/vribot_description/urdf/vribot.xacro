@@ -1,0 +1,19 @@
+<?xml version='1.0'?>
+
+<robot name="vribot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- General -->
+  <xacro:include filename="$(find vribot_description)/urdf/p3dx/p3dx.xacro" />
+
+  <!-- Bases -->
+  <!-- Stacks -->
+
+  <!-- 3D Sensors -->
+  <xacro:include filename="$(find vribot_description)/urdf/sensors/sensors_simple.xacro" />
+  <!-- iGibson -->
+  <xacro:include filename="$(find vribot_description)/urdf/sensors/igibson.xacro" />
+  <!-- Gazebo -->
+  <xacro:include filename="$(find vribot_description)/urdf/p3dx/p3dx.gazebo" />
+  <xacro:include filename="$(find vribot_description)/urdf/sensors/sensors.gazebo" />
+
+</robot>

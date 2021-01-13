@@ -1,0 +1,25 @@
+footprint: [ [-0.20, -0.2], [-0.27, -0.15], [-0.27, 0.15], [-0.20, 0.2], [0.07, 0.2],  [0.19, 0.05], [0.19, -0.05], [0.07, -0.2] ]
+# footprint_padding: 0.01
+
+robot_base_frame: base_footprint
+update_frequency: 4.0
+publish_frequency: 3.0
+transform_tolerance: 0.5
+
+resolution: 0.05
+
+obstacle_range: 5.5
+raytrace_range: 6.0
+
+#layer definitions
+static:
+    map_topic: /map
+    subscribe_to_updates: true
+
+obstacle_laser:
+  observation_sources: ydlidar_x4
+  # ydlidar_x4: {sensor_frame: laser_frame, data_type: LaserScan, topic: /scan, marking: true, clearing: true, obstacle_range: 10.0, raytrace_range: 12.0, inf_is_valid: true}
+  ydlidar_x4: {sensor_frame: laser_frame, data_type: LaserScan, topic: /gibson_ros/lidar/scan, marking: true, clearing: true, obstacle_range: 10.0, raytrace_range: 12.0, inf_is_valid: true}
+
+inflation:
+    inflation_radius: 1.0

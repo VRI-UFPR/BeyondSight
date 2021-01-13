@@ -1,0 +1,5 @@
+assets_path: /gibson_dataset/assets
+cubicasa_dataset_path: /gibson_dataset/dataset
+g_dataset_path: /gibson_dataset/dataset
+ig_dataset_path: /gibson_dataset/dataset
+threedfront_dataset_path: /gibson_dataset/dataset

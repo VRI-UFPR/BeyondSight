@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <!-- We use a custom world for the rrbot so that the camera angle is launched correctly -->
+
+  <world name="default">
+
+    <!-- Global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://tileLab</uri>
+    </include>
+
+    <include>
+      <uri>model://simpleFourWallNonUniform</uri>
+    </include>
+
+    <include>
+      <uri>model://construction_cone</uri>
+      <pose>0.0 0.0 0.2 0.0 0.0 0.0</pose>
+    </include>
+
+    <!-- Focus camera on tall pendulum -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-0.241862 -0.045901 11.828028 0.000000 1.570796 0.0</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

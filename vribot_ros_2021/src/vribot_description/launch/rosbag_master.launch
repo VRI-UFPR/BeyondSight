@@ -1,0 +1,24 @@
+<launch>
+  <arg name="rate"            default="1.0"/>
+  <arg name="bag_file"        default="$(find vribot_description)/bags/_2019-09-14-01-16-21.bag"/>
+  <param name="/use_sim_time" value="true"/>
+
+  <include file="$(find vribot_description)/launch/play_bag.launch">
+    <arg name="bag_file" value="$(arg bag_file)"/>
+    <arg name="rate" value="$(arg rate)"/>
+    <arg name="delay" value="30.0"/>
+  </include>
+
+  <!-- RTABMAP -->
+
+  <include file="$(find vribot_navigation)/launch/vribot_navigation_pioneer_screen.launch"></include>
+  <!-- <include file="$(find turtlebot3_slam_3d)/launch/rtabmap.launch">
+    <arg name="rate" value="$(arg rate)"/>
+    <arg name="rviz" value="false"/>
+  -->
+
+  <!-- RVIZ -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz"
+	args="-d $(find turtlebot3_slam_3d)/config/yolo.rviz" /> -->
+
+</launch>

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-  <!-- BEGIN FULL NAV STACK -->
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find vribot_description)/urdf/vribot.xacro'"/>
+
   <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_ros/rgbd_sync" output="screen">
-    <remap from="rgb/image" to="/gibson_ros/camera/rgb/image"/>
-    <remap from="depth/image" to="/gibson_ros/camera/depth/image_raw"/>
-    <remap from="rgb/camera_info" to="/gibson_ros/camera/depth/camera_info"/>
+    <remap from="rgb/image" to="/camera/rgb/image_raw"/>
+    <remap from="depth/image" to="/camera/depth/image_raw"/>
+    <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/>
     <remap from="rgbd_image" to="rgbd_image"/>
     <!-- output -->
 
@@ -13,6 +13,12 @@
     <param name="approx_sync" value="true"/>
   </node>
 
+  <!-- FOR SIMULATION -->
+  <node name="laser_to_pointcloud2" pkg="laser_to_pointcloud2" type="laser_to_pointcloud2"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find vribot_description)/urdf/vribot.xacro'"/>
+  </node>
 
   <!-- Arguments -->
   <arg name="open_rviz" default="true"/>
@@ -28,12 +34,7 @@
   <group ns="rtabmap">
     <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="$(arg rtabmap_args)">
       <param name="database_path" type="string" value="$(arg database_path)"/>
-
-      <param name="frame_id" type="string" value="base_footprint"/>
-      <param name="map_frame_id" type="string" value="map"/>
-      <param name="publish_tf" type="bool" value="true"/>
-      <!-- <param name="queue_size" type="int" value="20"/> -->
-
+      <param name="frame_id" type="string" value="base_link"/>
 
       <param name="subscribe_rgb" type="bool" value="false"/>
       <param name="subscribe_depth" type="bool" value="false"/>
@@ -46,17 +47,15 @@
       <!-- <remap from="move_base" to="/move_base"/> -->
 
       <!-- inputs -->
-      <remap from="scan" to="/gibson_ros/lidar/scan"/>
+      <remap from="scan" to="/scan"/>
       <remap from="odom" to="/odom"/>
       <remap from="rgbd_image" to="/rgbd_image"/>
 
       <!-- output -->
       <remap from="grid_map" to="/map"/>
-      <remap from="grid_prob_map" to="/map"/>
 
       <!-- RTAB-Map's parameters -->
-      <param name="Reg/Strategy" type="string" value="2"/>
-      <!-- 0=Visual, 1=ICP, 2=Visual+ICP -->
+      <param name="Reg/Strategy"       type="string" value="2"/>    <!-- 0=Visual, 1=ICP, 2=Visual+ICP -->
       <param name="Reg/Force3DoF" type="string" value="true"/>
       <param name="GridGlobal/MinSize" type="string" value="20"/>
 
@@ -70,36 +69,26 @@
       <param name="database_path" type="string" value="$(arg database_path)"/>
       <param name="subscribe_depth" type="bool" value="false"/>
       <param name="subscribe_rgbd" type="bool" value="true"/>
-
       <param name="subscribe_scan" type="bool" value="true"/>
-
       <param name="subscribe_odom" type="bool" value="true"/>
-      <param name="frame_id" type="string" value="base_footprint"/>
+      <param name="frame_id" type="string" value="base_link"/>
       <param name="approx_sync" type="bool" value="true"/>
 
       <remap from="odom" to="/odom"/>
-      <remap from="scan" to="/gibson_ros/lidar/scan"/>
+      <remap from="scan" to="/scan"/>
       <remap from="rgbd_image" to="/rgbd_image"/>
     </node>
   </group>
 
+    <!-- move_base -->
+    <include file="$(find vribot_navigation)/launch/move_base.launch"></include>
 
-  <!-- move_base -->
-  <!-- <include file="$(find vribot_navigation)/launch/move_base.launch"> -->
-  <include file="$(find vribot_navigation)/launch/move_base_teb_igibson.launch">
-    <!-- <remap from="odom" to="/odom"/>
-    <remap from="scan" to="/gibson_ros/lidar/scan"/>
-    <remap from="depth/points" to="/gibson_ros/camera/depth/points"/> -->
-  </include>
+    <!-- pioneer_controller_spin_recover -->
+    <include file="$(find pioneer_ros)/launch/pioneer_controller_spin_recover.launch"></include>
 
-  <!-- pioneer_controller_spin_recover -->
-  <!-- <include file="$(find pioneer_ros)/launch/pioneer_controller_spin_recover.launch"></include> -->
+    <!-- rviz -->
+    <group if="$(arg open_rviz)">
+      <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find vribot_description)/launch/basic_with_gt.rviz"/>
+    </group>
 
-  <!-- rviz -->
-  <group if="$(arg open_rviz)">
-    <!-- <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find vribot_igibson)/launch/igibson_rviz.rviz"/> -->
-    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find vribot_description)/launch/basic_with_gt.rviz"/>
-  </group>
-  <!-- END FULL NAV STACK -->
-
-</launch>
+  </launch>

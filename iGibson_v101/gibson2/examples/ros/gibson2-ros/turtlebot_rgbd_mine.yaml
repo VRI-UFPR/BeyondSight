@@ -1,0 +1,131 @@
+# scene
+scene: building
+# model_id: Rs
+model_id: Placida
+# model_id: Adrian
+# model_id: Rs_interactive
+# is_interactive: false
+is_interactive: true
+build_graph: true
+# build_graph: false
+load_texture: true
+trav_map_resolution: 0.1
+trav_map_erosion: 2
+
+# robot
+robot: VRIBot
+is_discrete: false
+velocity: 1.0
+
+# task, observation and action
+task: pointgoal # pointgoal|objectgoal|areagoal|reaching
+target_dist_min: 1.0
+target_dist_max: 10.0
+initial_pos_z_offset: 0.1
+additional_states_dim: 4
+
+initial_orn: [0.0, 0.0, 0.0]
+initial_pos: [0.0, 0.0, 0.0]
+
+target_orn: [0.0, 0.0, 0.0]
+# target_pos: [3.0, 5.0, 0.0]
+target_pos: [-2.0, -0.5, 0.0]
+
+
+# reward
+reward_type: geodesic
+success_reward: 10.0
+slack_reward: -0.01
+potential_reward_weight: 1.0
+collision_reward_weight: -0.1
+collision_ignore_link_a_ids: [1, 2, 3, 4]  # ignore collisions with these robot links
+
+# discount factor
+discount_factor: 0.99
+
+# termination condition
+dist_tol: 0.36  # body width
+max_step: 500
+max_collisions_allowed: 500
+# goal_format: polar
+goal_format: cartesian
+
+# sensor spec
+# output: [sensor, rgb, depth, seg, scan]
+output: [sensor, rgb, depth, scan]
+# # image
+# # ASUS Xtion PRO LIVE
+# # https://www.asus.com/us/3D-Sensor/Xtion_PRO_LIVE
+# fisheye: false
+# image_width: 256
+# image_height: 256
+# vertical_fov: 45
+# # depth
+# depth_low: 0.8
+# depth_high: 3.5
+
+# image
+# kinect v1
+fisheye: false
+image_width: 640
+image_height: 480
+vertical_fov: 43
+# depth
+depth_low: 0.8
+depth_high: 4.0
+
+
+# scan
+# mine is YDLIDAR X4
+# https://github.com/EAIBOT/ydlidar
+# n_horizontal_rays is based on angle resolution, 0.50 degrees
+
+#683 rays = one each 0.52 degrees
+
+# n_horizontal_rays is originally 683, sub-sampled 1/3
+n_horizontal_rays: 228
+n_vertical_beams: 1
+laser_linear_range: 16.0
+laser_angular_range: 180.0
+min_laser_dist: 0.08
+laser_link_name: laser_frame
+
+# sensor noise
+depth_noise_rate: 0.01
+scan_noise_rate: 0.01
+
+
+
+
+
+
+# visual objects
+visual_object_at_initial_target_pos: true
+target_visual_object_visible_to_agent: false
+
+
+
+
+
+
+use_filler: true
+display_ui: false
+show_diagnostics: false
+ui_num: 2
+ui_components: [RGB_FILLED, DEPTH]
+random:
+  random_initial_pose : false
+  random_target_pose : false
+  random_init_x_range: [-0.1, 0.1]
+  random_init_y_range: [-0.1, 0.1]
+  random_init_z_range: [-0.1, 0.1]
+  random_init_rot_range: [-0.1, 0.1]
+
+# resolution: 256
+
+speed:
+  timestep: 0.001
+  frameskip: 10
+
+verbose: false
+fast_lq_render: true

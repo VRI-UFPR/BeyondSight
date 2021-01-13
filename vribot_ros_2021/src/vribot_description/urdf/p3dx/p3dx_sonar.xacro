@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:sonar_sensor update_rate="10" name="s0" ros_topic="s0" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.067700 0.140400 0.208400" rpy="0 0 1.570796"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s1" ros_topic="s1" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.117200 0.122900 0.208400" rpy="0 0 0.872665"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s2" ros_topic="s2" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.151700 0.079900 0.208400" rpy="0 0 0.523599"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s3" ros_topic="s3" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.169900 0.029700 0.208400" rpy="0 0 0.174533"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s4" ros_topic="s4" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.169900 -0.029700 0.208400" rpy="0 0 -0.174533"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s5" ros_topic="s5" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.151700 -0.079900 0.208400" rpy="0 0 -0.523599"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s6" ros_topic="s6" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.117200 -0.122900 0.208400" rpy="0 0 -0.872665"/>
+  </xacro:sonar_sensor>
+  <xacro:sonar_sensor update_rate="10" name="s7" ros_topic="s7" min_range="0.100000" ray_count="2" field_of_view="0.267000" parent="base_link" max_range="3">
+    <origin xyz="0.067700 -0.140400 0.208400" rpy="0 0 -1.570796"/>
+  </xacro:sonar_sensor>
+</robot>

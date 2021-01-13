@@ -30,6 +30,7 @@ esac
 done
 
 echo "CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES}
+echo "MODE" ${MODE}
 
 if [ $MODE = 1 ]; then
   #run standand CMD set on the docker image using old syntax

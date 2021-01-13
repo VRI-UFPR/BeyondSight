@@ -1,9 +1,6 @@
 FROM igibson_with_ros_and_beyond AS sim_image
 LABEL stage=builderConfigIgibson
 
-
-
-# apt-get install -y ros-noetic-global-planner libcublas-dev-11-0 libcufft-dev-11-0 libcurand-dev-11-0 libcusolver-dev-11-0 libcusparse-dev-11-0
 ################################################################################
 ADD vribot_ros_2021 /vribot
 ADD iGibson_v101/gibson2/examples/ros/ /opt/igibson/gibson2/examples/ros/
@@ -14,27 +11,16 @@ ADD iGibson_v101/gibson2/scenes/indoor_scene.py /opt/igibson/gibson2/scenes/indo
 
 RUN ln -sfn /opt/igibson /vribot/src/gibson2-ros
 # RUN ln -sfn /vribot/src/vribot_description /gibson_dataset/assets/models/vribot/vribot_description
-RUN echo "ln -sfn /vribot/src/vribot_description /gibson_dataset/assets/models/vribot/vribot_descriptionh" >> ~/.bashrc
+RUN echo "ln -sfn /vribot/src/vribot_description /gibson_dataset/assets/models/vribot/vribot_description" >> ~/.bashrc
 RUN ln -sfn /opt/igibson/gibson2/examples/ros/gibson2-ros/beyond_agent /beyond_agent
 ################################################################################
 
-#SETUP DATASET PATH
-# pip uninstall pybullet
-# pip install https://github.com/StanfordVL/bullet3/archive/master.zip
-# RUN /bin/bash -c ". activate py3-igibson; python -m gibson2.utils.assets_utils --change_data_path";
+#TODO: Remove once base image is updated.
+# RUN /bin/bash -c ". activate py3-igibson; git clone --branch v0.1.5 http://github.com/facebookresearch/habitat-lab.git /habitat-lab;"
+# #RUN /bin/bash -c ". activate habitat; mv habitat-api habitat-lab ; cp -r habitat-lab2/habitat_baselines habitat-lab/.; cp -r habitat-lab2/habitat/tasks habitat-lab/habitat/.;cp -r habitat-lab2/habitat/core/embodied_task.py habitat-lab/habitat/core/.; cp -r habitat-lab2/habitat/core/dataset.py habitat-lab/habitat/core/.; cp -r habitat-lab2/habitat/sims habitat-lab/habitat/."
+# RUN /bin/bash -c ". activate py3-igibson ; cd /habitat-lab ; python setup.py develop build_ext --parallel 5 install; cd .." AS v0.1.5
+################################################################################
 
-#assets
-#/gibson_dataset/assets
-#dataset
-#/gibson_dataset/dataset
-#other don't care
-
-#SETUP VRIBOT SYM LINK
-#RUN ln -sfn /vribot/src/vribot_description /gibson_dataset/assets/models/vribot_description
-#RUN ln -sfn /opt/igibson/gibson2/examples/ros/gibson2-ros/beyond_agent /beyond_agent
-#ADD compile_yolact.sh /compile_yolact.sh
-
-# pip install PyQt5 PySide2
 
 #SETUP ENTRYPOINT
 CMD ["/bin/bash", "-c", "source activate py3-igibson && sh"]

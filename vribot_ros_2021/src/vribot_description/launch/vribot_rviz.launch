@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+
+  <!-- <param name="robot_description" command="$(find xacro)/xacro '$(find vribot_description)/urdf/vribot.xacro'"/> -->
+
+  <!-- Combine joint values -->
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+    <param name="robot_description" command="$(find xacro)/xacro '$(find vribot_description)/urdf/vribot.xacro'"/>
+  </node> -->
+
+  <!-- Show in Rviz   -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz"/> -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find vribot_description)/launch/basic.rviz"/>
+
+</launch>

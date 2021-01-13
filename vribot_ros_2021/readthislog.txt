@@ -1,0 +1,165 @@
+... logging to /home/dvruiz/.ros/log/044d8626-5002-11ea-b94c-7824afb6e066/roslaunch-DANI-NOTE-31432.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/dvruiz/pos/codeForFinalThesis/vribot/src/flightgoggles/flightgoggles/launch/core.launch
+[1mstarted roslaunch server http://DANI-NOTE:39003/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro: melodic
+ * /rosversion: 1.14.3
+ * /uav/Gate1/nominal_location: [[-0.009000421, -...
+ * /uav/Gate1/perturbation_bound: [2.5, 2.5, 5.0]
+ * /uav/Gate10/nominal_location: [[18.15111, 3.631...
+ * /uav/Gate10/perturbation_bound: [1.0, 1.0, 5.0]
+ * /uav/Gate11/nominal_location: [[-27.01367, 2.54...
+ * /uav/Gate11/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate12/nominal_location: [[18.40823, 13.60...
+ * /uav/Gate12/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate13/nominal_location: [[1.237332, 9.001...
+ * /uav/Gate13/perturbation_bound: [2.5, 2.5, 5.0]
+ * /uav/Gate14/nominal_location: [[-10.4501, -31.3...
+ * /uav/Gate14/perturbation_bound: [1.0, 1.0, 5.0]
+ * /uav/Gate15/nominal_location: [[5.744822, -11.7...
+ * /uav/Gate15/perturbation_bound: [0.0, 2.5, 5.0]
+ * /uav/Gate16/nominal_location: [[-13.73218, 28.6...
+ * /uav/Gate16/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate17/nominal_location: [[-20.57, -13.298...
+ * /uav/Gate17/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate18/nominal_location: [[13.51782, 21.76...
+ * /uav/Gate18/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate19/nominal_location: [[15.96136, -17.2...
+ * /uav/Gate19/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate2/nominal_location: [[-0.2551794, 27....
+ * /uav/Gate2/perturbation_bound: [0.0, 1.0, 5.0]
+ * /uav/Gate20/nominal_location: [[-25.39118, 25.0...
+ * /uav/Gate20/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate21/nominal_location: [[15.15353, 37.63...
+ * /uav/Gate21/perturbation_bound: [0.0, 0.0, 2.0]
+ * /uav/Gate22/nominal_location: [[4.798321, -27.3...
+ * /uav/Gate22/perturbation_bound: [1.0, 1.0, 5.0]
+ * /uav/Gate23/nominal_location: [[-9.328671, 7.77...
+ * /uav/Gate23/perturbation_bound: [2.5, 2.5, 5.0]
+ * /uav/Gate3/nominal_location: [[-0.3703381, -12...
+ * /uav/Gate3/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate4/nominal_location: [[-31.56487, -13....
+ * /uav/Gate4/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate5/nominal_location: [[-20.94317, 14.6...
+ * /uav/Gate5/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate6/nominal_location: [[-9.14867, 30.62...
+ * /uav/Gate6/perturbation_bound: [0.0, 0.0, 2.0]
+ * /uav/Gate7/nominal_location: [[16.2506, 41.63,...
+ * /uav/Gate7/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate8/nominal_location: [[-3.430186, 11.7...
+ * /uav/Gate8/perturbation_bound: [0.0, 0.0, 0.0]
+ * /uav/Gate9/nominal_location: [[-6.40867, -12.1...
+ * /uav/Gate9/perturbation_bound: [0.0, 0.0, 2.0]
+ * /uav/camera/render_stereo: 0
+ * /uav/flightgoggles_imu/accelerometer_biasinitvar: 0.0
+ * /uav/flightgoggles_imu/accelerometer_biasprocess: 1e-07
+ * /uav/flightgoggles_imu/accelerometer_variance: 0.005
+ * /uav/flightgoggles_imu/gyroscope_biasinitvar: 0.0
+ * /uav/flightgoggles_imu/gyroscope_biasprocess: 1e-07
+ * /uav/flightgoggles_imu/gyroscope_variance: 0.003
+ * /uav/flightgoggles_laser/rangefinder_max_range: 20.0
+ * /uav/flightgoggles_laser/rangefinder_variance: 0.009
+ * /uav/flightgoggles_lpf/gain_p: 35530.5758439
+ * /uav/flightgoggles_lpf/gain_q: 266.57297629
+ * /uav/flightgoggles_pid/gain_d_pitch: 0.3
+ * /uav/flightgoggles_pid/gain_d_roll: 0.3
+ * /uav/flightgoggles_pid/gain_d_yaw: 0.3
+ * /uav/flightgoggles_pid/gain_i_pitch: 3.0
+ * /uav/flightgoggles_pid/gain_i_roll: 3.0
+ * /uav/flightgoggles_pid/gain_i_yaw: 3.0
+ * /uav/flightgoggles_pid/gain_p_pitch: 9.0
+ * /uav/flightgoggles_pid/gain_p_roll: 9.0
+ * /uav/flightgoggles_pid/gain_p_yaw: 9.0
+ * /uav/flightgoggles_pid/int_bound_pitch: 1000.0
+ * /uav/flightgoggles_pid/int_bound_roll: 1000.0
+ * /uav/flightgoggles_pid/int_bound_yaw: 1000.0
+ * /uav/flightgoggles_pid/moment_arm: 0.08
+ * /uav/flightgoggles_pid/thrust_coefficient: 1.91e-06
+ * /uav/flightgoggles_pUsing sim_time and did not get a clock scaling value. Defaulting to automatic clock scaling.
+Ignore collisions: 0
+Initial position: 0, 0, 1
+Initial attitude: 0, 0, 0, 1
+Initializing ZMQ connections...
+Done!
+id/torque_coefficient: 2.6e-07
+ * /uav/flightgoggles_pid/vehicle_inertia_xx: 0.0049
+ * /uav/flightgoggles_pid/vehicle_inertia_yy: 0.0049
+ * /uav/flightgoggles_pid/vehicle_inertia_zz: 0.0069
+ * /uav/flightgoggles_ros_bridge/baseline: 0.32
+ * /uav/flightgoggles_ros_bridge/collider_radius: 0.15
+ * /uav/flightgoggles_ros_bridge/image_height: 768
+ * /uav/flightgoggles_ros_bridge/image_width: 1024
+ * /uav/flightgoggles_ros_bridge/render_stereo: False
+ * /uav/flightgoggles_uav_dynamics/aeromoment_coefficient_xx: 0.003
+ * /uav/flightgoggles_uav_dynamics/aeromoment_coefficient_yy: 0.003
+ * /uav/flightgoggles_uav_dynamics/aeromoment_coefficient_zz: 0.003
+ * /uav/flightgoggles_uav_dynamics/drag_coefficient: 0.1
+ * /uav/flightgoggles_uav_dynamics/force_process_noise: 0.0005
+ * /uav/flightgoggles_uav_dynamics/ignore_collisions: False
+ * /uav/flightgoggles_uav_dynamics/init_pose: [0.0, 0.0, 1.0, 0...
+ * /uav/flightgoggles_uav_dynamics/max_prop_speed: 2200.0
+ * /uav/flightgoggles_uav_dynamics/moment_arm: 0.08
+ * /uav/flightgoggles_uav_dynamics/moment_process_noise: 1.25e-07
+ * /uav/flightgoggles_uav_dynamics/motor_rotational_inertia: 6.62e-06
+ * /uav/flightgoggles_uav_dynamics/motor_time_constant: 0.02
+ * /uav/flightgoggles_uav_dynamics/thrust_coefficient: 1.91e-06
+ * /uav/flightgoggles_uav_dynamics/torque_coefficient: 2.6e-07
+ * /uav/flightgoggles_uav_dynamics/use_ratethrust_controller: True
+ * /uav/flightgoggles_uav_dynamics/use_rungekutta4integrator: False
+ * /uav/flightgoggles_uav_dynamics/vehicle_inertia_xx: 0.0049
+ * /uav/flightgoggles_uav_dynamics/vehicle_inertia_yy: 0.0049
+ * /uav/flightgoggles_uav_dynamics/vehicle_inertia_zz: 0.0069
+ * /uav/flightgoggles_uav_dynamics/vehicle_mass: 1.0
+ * /use_sim_time: True
+
+NODES
+  /uav/
+    camera_left_link (tf2_ros/static_transform_publisher)
+    camera_left_link_internal_hotfix (tf2_ros/static_transform_publisher)
+    camera_left_link_internal_nwu (tf2_ros/static_transform_publisher)
+    flightgogglesRenderer (flightgoggles/FlightGoggles.x86_64)
+    flightgoggles_marker_visualizer (flightgoggles_marker_visualizer/flightgoggles_marker_visualizer)
+    flightgoggles_ros_bridge (flightgoggles_ros_bridge/ROSClient)
+    flightgoggles_uav_dynamics (flightgoggles_uav_dynamics/node)
+    rviz (rviz/rviz)
+    world_ned_link (tf2_ros/static_transform_publisher)
+
+auto-starting new master
+[1mprocess[master]: started with pid [31447][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/dvruiz/pos/codeForFinalThesis/vribot/src/flightgoggles/flightgoggles/launch/core.launch http://localhost:11311
+[1msetting /run_id to 044d8626-5002-11ea-b94c-7824afb6e066[0m
+[1mprocess[rosout-1]: started with pid [31461][0m
+started core service [/rosout]
+[1mprocess[uav/flightgoggles_uav_dynamics-2]: started with pid [31468][0m
+[1mprocess[uav/flightgogglesRenderer-3]: started with pid [31469][0m
+[1mprocess[uav/flightgoggles_ros_bridge-4]: started with pid [31471][0m
+[1mprocess[uav/flightgoggles_marker_visualizer-5]: started with pid [31477][0m
+[1mprocess[uav/rviz-6]: started with pid [31478][0m
+[1mprocess[uav/camera_left_link-7]: started with pid [31480][0m
+[1mprocess[uav/camera_left_link_internal_hotfix-8]: started with pid [31482][0m
+[1mprocess[uav/camera_left_link_internal_nwu-9]: started with pid [31491][0m
+[1mprocess[uav/world_ned_link-10]: started with pid [31500][0m
+[uav/flightgogglesRenderer-3] restarting process
+[1mprocess[uav/flightgogglesRenderer-3]: started with pid [31593][0m
+[uav/world_ned_link-10] killing on exit
+[uav/camera_left_link_internal_nwu-9] killing on exit
+[uav/camera_left_link_internal_hotfix-8] killing on exit
+[uav/camera_left_link-7] killing on exit
+[uav/flightgoggles_marker_visualizer-5] killing on exit
+[uav/rviz-6] killing on exit
+[uav/flightgoggles_ros_bridge-4] killing on exit
+[uav/flightgogglesRenderer-3] killing on exit
+[uav/flightgoggles_uav_dynamics-2] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m
