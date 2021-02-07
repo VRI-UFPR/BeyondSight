@@ -1,0 +1,196 @@
+.circleci
+.DS_Store
+res
+habitat-challenge-data/
+
+# Byte-compiled / optimized / DLL files
+beyond_agent/yolact/__pycache__/
+beyond_agent/yolact/*.py[cod]
+beyond_agent/yolact/*$py.class
+
+
+# C extensions
+beyond_agent/yolact/*.so
+
+
+# Distribution / packaging
+beyond_agent/yolact/.Python
+beyond_agent/yolact/env/
+beyond_agent/yolact/build/
+beyond_agent/yolact/develop-eggs/
+beyond_agent/yolact/dist/
+beyond_agent/yolact/downloads/
+beyond_agent/yolact/eggs/
+beyond_agent/yolact/.eggs/
+beyond_agent/yolact/lib/
+beyond_agent/yolact/lib64/
+beyond_agent/yolact/parts/
+beyond_agent/yolact/sdist/
+beyond_agent/yolact/var/
+beyond_agent/yolact/*.egg-info/
+beyond_agent/yolact/.installed.cfg
+beyond_agent/yolact/*.egg
+
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+beyond_agent/yolact/*.manifest
+beyond_agent/yolact/*.spec
+
+
+# Installer logs
+beyond_agent/yolact/pip-log.txt
+beyond_agent/yolact/pip-delete-this-directory.txt
+
+
+# Unit test / coverage reports
+beyond_agent/yolact/htmlcov/
+beyond_agent/yolact/.tox/
+beyond_agent/yolact/.coverage
+beyond_agent/yolact/.coverage.*
+beyond_agent/yolact/.cache
+beyond_agent/yolact/nosetests.xml
+beyond_agent/yolact/coverage.xml
+beyond_agent/yolact/*,cover
+beyond_agent/yolact/.hypothesis/
+
+
+# Translations
+beyond_agent/yolact/*.mo
+beyond_agent/yolact/*.pot
+
+
+# Django stuff:
+beyond_agent/yolact/*.log
+beyond_agent/yolact/local_settings.py
+
+
+# Flask stuff:
+beyond_agent/yolact/instance/
+beyond_agent/yolact/.webassets-cache
+
+
+# Scrapy stuff:
+beyond_agent/yolact/.scrapy
+
+
+# Sphinx documentation
+beyond_agent/yolact/docs/_build/
+
+
+# PyBuilder
+beyond_agent/yolact/target/
+
+
+# IPython Notebook
+beyond_agent/yolact/.ipynb_checkpoints
+
+
+# pyenv
+beyond_agent/yolact/.python-version
+
+
+# celery beat schedule file
+beyond_agent/yolact/celerybeat-schedule
+
+
+# dotenv
+beyond_agent/yolact/.env
+
+
+# virtualenv
+beyond_agent/yolact/venv/
+beyond_agent/yolact/ENV/
+
+
+# Spyder project settings
+beyond_agent/yolact/.spyderproject
+
+
+# Rope project settings
+beyond_agent/yolact/.ropeproject
+
+
+# atom remote-sync package
+beyond_agent/yolact/.remote-sync.json
+
+
+# weights
+beyond_agent/yolact/weights/
+
+
+#DS_Store
+beyond_agent/yolact/.DS_Store
+
+
+# dev stuff
+beyond_agent/yolact/eval/
+beyond_agent/yolact/eval.ipynb
+beyond_agent/yolact/dev.ipynb
+beyond_agent/yolact/.vscode/
+
+
+# not ready
+beyond_agent/yolact/videos/
+beyond_agent/yolact/templates/
+beyond_agent/yolact/data/ssd_dataloader.py
+beyond_agent/yolact/data/datasets/
+beyond_agent/yolact/doc/visualize.py
+beyond_agent/yolact/read_results.py
+beyond_agent/yolact/ssd300_120000/
+beyond_agent/yolact/demos/live
+beyond_agent/yolact/webdemo.py
+beyond_agent/yolact/test_data_aug.py
+
+
+# attributes
+
+
+# pycharm
+beyond_agent/yolact/.idea/
+
+
+# temp checkout soln
+beyond_agent/yolact/data/coco
+beyond_agent/yolact/data/sbd
+beyond_agent/yolact/data/cityscapes
+
+
+# pylint
+beyond_agent/yolact/.pylintrc
+
+
+# ssd.pytorch master branch (for merging)
+beyond_agent/yolact/ssd.pytorch/
+
+
+# some datasets
+beyond_agent/yolact/data/VOCdevkit/
+beyond_agent/yolact/data/coco/images/
+beyond_agent/yolact/data/coco/annotations/
+beyond_agent/yolact/ap_data.pkl
+beyond_agent/yolact/results/
+beyond_agent/yolact/logs/
+beyond_agent/yolact/scripts/aws/
+beyond_agent/yolact/scripts/gt.npy
+beyond_agent/yolact/scripts/proto.npy
+beyond_agent/yolact/scripts/info.txt
+beyond_agent/yolact/test.pkl
+beyond_agent/yolact/testeval.py
+beyond_agent/yolact/scripts/aws2/
+beyond_agent/yolact/status.sh
+beyond_agent/yolact/train.sh
+beyond_agent/yolact/img/
+beyond_agent/yolact/scripts/aws-ohio/
+beyond_agent/yolact/scripts/aws3/
+beyond_agent/yolact/data/config_dev.py
+beyond_agent/yolact/data/coco/
+beyond_agent/yolact/data/sbd/
+
+
+beyond_agent/yolact/vid/
+beyond_agent/yolact/vidres/
+
+
+beyond_agent/yolact/_.py
