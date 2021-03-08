@@ -1,0 +1,39 @@
+BEYOND_TRAINER:
+  TRAIN_MODE: True
+  # TRAIN_MODE: False
+  DEVICE: "cuda"
+  LR: 2.5e-3
+  # N_ITERATIONS: 82000
+  N_ITERATIONS: 11010048
+
+  EVAL_BATCH_SIZE: 1
+  # BATCH_SIZE: 1
+  # BATCH_SIZE: 2
+  BATCH_SIZE: 4
+
+  LOSS: "MSELoss"
+
+  OPTIMIZER: "SGD"
+  MOMENTUM: 0.9
+
+  SCHEDULER: "CosineAnnealing"
+  SCHEDULER2: "ReduceLROnPlateau"
+
+  PRINT_EVERY: 256
+  SAVE_EVERY: 16384
+
+  EXPERIMENT_NAME: "beyond_with_sseg_oracle_habitat_challenge"
+  LOG_DIR: "habitat-challenge-data/log/"
+  CHECKPOINT_DIR: "habitat-challenge-data/checkpoints/"
+
+  USE_PREDICTION: True
+  # USE_PREDICTION: False
+
+  LOAD_CHECKPOINT: True
+  # LOAD_CHECKPOINT: False
+  ENVIRONMENT_LIST:
+    TRAIN:
+      TYPE: ObjectNav-v1
+      PATH: "habitat-challenge-data/objectnav_mp3d_v1/train_small/"
+      # objectnav_mp3d_v1/train_small/train_small.json.gz
+      NAMES: ["train_small","train_small","train_small","train_small"]
