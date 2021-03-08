@@ -1,0 +1,5 @@
+logs/
+build/
+devel/
+newcode.zip
+.catkin_tools/

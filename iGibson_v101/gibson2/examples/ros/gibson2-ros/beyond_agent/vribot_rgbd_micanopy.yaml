@@ -1,0 +1,225 @@
+# scene
+scene: gibson
+# model_id: Rs
+scene_id: Placida
+# scene_id: Micanopy
+# model_id: Adrian
+# model_id: Rs_interactive
+is_interactive: false
+# is_interactive: true
+build_graph: true
+# build_graph: false
+load_texture: true
+pybullet_load_texture: true
+trav_map_type: no_obj
+trav_map_resolution: 0.1
+trav_map_erosion: 2
+
+
+# robot
+robot: VRIBot
+is_discrete: false
+velocity: 1.0
+
+# # task, observation and action
+# task: pointgoal # pointgoal|objectgoal|areagoal|reaching
+# target_dist_min: 1.0
+# target_dist_max: 10.0
+# initial_pos_z_offset: 0.1
+# additional_states_dim: 4
+#
+# initial_orn: [0.0, 0.0, 0.0]
+# # initial_pos: [ 0.14092,  0.10278, -2.87348]
+# initial_pos: [ 0.14092,  0.10278, 2.87348]
+#
+# target_orn: [0.0, 0.0, 0.0]
+# # target_pos: [3.0, 5.0, 0.0]
+# # target_pos: [-2.0, -0.5, 0.0]
+# target_pos: [-0.5, -0.5, 0.0]
+
+# WARNING I AM HARDCODING A OBJECT GOAL FOR TESTING
+# "bed": 6
+# "couch": 5,
+# "refrigerator": 3,
+# objectgoal_id: 5
+# objectgoal_id: 6
+# "chair": 0,
+objectgoal_id: 5
+# task
+task: point_nav_fixed
+initial_pos: [-2.0, 0.0, 0.0]
+initial_orn: [0.0, 0.0, 0.0]
+
+# initial_pos: [ 0.14092,  0.10278, 2.87348]
+# initial_orn: [0.0, 0.0, 0.0]
+# initial_orn: [0.0, 0.0, 3.14]
+
+#coordinates in world_coords
+#Micanopy_2_4m
+# 'refrigerator', 'episode_id': '7594', 'agent_starting_state': {'position': array([ 3.14885,  2.90278, -1.18383], dtype=float32), 'rotation': quaternion(0.923399984836578, 0, 0.383830010890961, 0)}, 'geodesic_distance': 2.7678158283233643}}
+#quaternion to rpy euler (3.141592653589793, -0.7878767779327397, 0.0)
+#initial_pos: [ 3.14885,  2.90278, -1.18383]
+#initial_orn: [ 3.141592653589793, -0.7878767779327397, 0.0]
+
+
+# initial_pos: [ 0.0,  0.1, -2.5]
+# initial_orn: [0.0, 0.0, 0.0]
+# initial_orn: [0.0, 0.0, 3.14]
+
+# initial_pos: [ 1.0,  1.0, 0.05]
+# initial_orn: [0.0, 0.0, 0.0]
+# initial_orn: [0.0, 0.0, 3.14]
+
+# initial_orn: [0.0, 0.0, 1.5707963267948966]
+
+
+# initial_pos: [ 5.0,  5.0, 0.05]
+# initial_orn: [0.0, 0.0, 0.0]
+
+# goal_format: polar
+task_obs_dim: 4
+
+#45 degrees
+# target_pos: [1.0, 0.785398, 0.0]
+#x front, y side
+# target_pos: [ 0.7,  -2.0, 2.87348]
+# target_orn: [0.0, 0.0, 0.0]
+
+# target_pos: [ 2.0,  1.0, -2.5]
+target_pos: [ -3.5,  -1.0, 0.0]
+target_orn: [0.0, 0.0, 0.0]
+
+# 'position': array([ 0.14092,  0.10278, -2.87348], dtype=float32), 'rotation': quaternion(-0.707459986209869, 0, 0.706759989261627, 0)
+
+# reward
+reward_type: geodesic
+success_reward: 10.0
+slack_reward: -0.01
+potential_reward_weight: 1.0
+collision_reward_weight: -0.1
+
+# base_footprint 0 -1
+# base_link 0 0
+# p3dx_left_wheel 0 1
+# p3dx_left_hubcap 0 2
+# p3dx_right_wheel 0 3
+# p3dx_right_hubcap 0 4
+# top_plate 0 5
+# camera_link 0 6
+# camera_depth_frame 0 7
+# camera_depth_optical_frame 0 8
+# eyes 0 9
+# camera_rgb_frame 0 10
+# camera_rgb_optical_frame 0 11
+# base_laser 0 12
+# laser_frame 0 13
+# body_frame 0 14
+# box_sensor_frame 0 15
+# swivel 0 16
+# center_wheel 0 17
+# center_hubcap 0 18
+# sonar 0 19
+# sonar_fake 0 20
+collision_ignore_link_a_ids: [-1, 0, 1, 2, 3, 4, 16, 17, 18]  # ignore collisions with these robot links
+
+# discount factor
+discount_factor: 0.99
+
+# termination condition
+# dist_tol: 0.36  # body width
+dist_tol: 1.0  # body width
+max_step: 5000
+max_collisions_allowed: 5000
+goal_format: polar
+# goal_format: cartesian
+
+# sensor spec
+# output: [sensor, rgb, depth, seg, scan]
+output: [task_obs, rgb, depth, scan]
+# # image
+# # ASUS Xtion PRO LIVE
+# # https://www.asus.com/us/3D-Sensor/Xtion_PRO_LIVE
+# fisheye: false
+# image_width: 256
+# image_height: 256
+# vertical_fov: 45
+# # depth
+# depth_low: 0.8
+# depth_high: 3.5
+
+# # image
+# # kinect v1
+# fisheye: false
+# image_width: 640
+# image_height: 480
+# vertical_fov: 43
+# # depth
+# depth_low: 0.8
+# depth_high: 4.0
+
+
+# image
+# kinect v1
+fisheye: false
+image_width: 640
+image_height: 480
+vertical_fov: 43
+# depth
+# depth_low: 0.5
+depth_low: 0.5
+depth_high: 5.0
+
+# scan
+# mine is YDLIDAR X4
+# https://github.com/EAIBOT/ydlidar
+# n_horizontal_rays is based on angle resolution, 0.50 degrees
+
+#683 rays = one each 0.52 degrees
+
+# n_horizontal_rays is originally 683, sub-sampled 1/3
+n_horizontal_rays: 228
+n_vertical_beams: 1
+laser_linear_range: 16.0
+laser_angular_range: 180.0
+min_laser_dist: 0.08
+laser_link_name: laser_frame
+
+# sensor noise
+depth_noise_rate: 0.01
+scan_noise_rate: 0.01
+
+
+
+
+
+
+# visual objects
+visual_object_at_initial_target_pos: true
+target_visual_object_visible_to_agent: false
+
+
+
+
+
+
+use_filler: true
+display_ui: false
+show_diagnostics: false
+ui_num: 2
+ui_components: [RGB_FILLED, DEPTH]
+random:
+  random_initial_pose : false
+  random_target_pose : false
+  random_init_x_range: [-0.1, 0.1]
+  random_init_y_range: [-0.1, 0.1]
+  random_init_z_range: [-0.1, 0.1]
+  random_init_rot_range: [-0.1, 0.1]
+
+# resolution: 256
+
+speed:
+  timestep: 0.001
+  frameskip: 10
+
+verbose: false
+fast_lq_render: true

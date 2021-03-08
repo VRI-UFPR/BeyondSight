@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="pioneer_ros" type="move_base_recover" name="move_base_recover" output="screen">
+    <!-- <remap from="controller_cmd_vel" to="/mobile_base/commands/velocity"/> -->
+    <remap from="controller_cmd_vel" to="/controller_cmd_vel"/>
+    <remap from="pioneer/cmd_vel" to="/mobile_base/commands/velocity"/>
+
+
+    <!-- <remap from="/cmd_vel" to="/mobile_base/commands/velocity"/> -->
+  </node>
+</launch>

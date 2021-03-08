@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="link_name" value="camera_link"/>
+  <xacro:property name="camera_name" value="camera"/>
+  <xacro:property name="frame_name" value="camera_rgb_frame"/>
+
+  <!-- BEGIN kinect -->
+  <joint name="top_plate_to_camera_link_joint" type="fixed">
+    <!-- 0 degree pitch -->
+    <origin rpy="0 0.0 0" xyz="0.15 0 0.62"/>
+    <!-- 13 degrees almost half of max angle -->
+    <!-- <origin rpy="0 0.226893 0" xyz="0.15 0 0.62"/> -->
+    <!-- max -27/+27 degree so set to max down  -->
+    <!-- <origin rpy="0 0.471239 0" xyz="0.15 0 0.62"/> -->
+    <parent link="top_plate"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <origin xyz=" 0 0 0 " rpy="0 0 1.57079632679"/>
+      <geometry>
+        <mesh filename="package://vribot_description/meshes/sensors/kinect.dae"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.0730 0.2760 0.0720"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- <joint name="camera_rgb_joint" type="fixed">
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+    <parent link="camera_link"/>
+    <child link="camera_rgb_frame"/>
+  </joint>
+
+  <link name="camera_rgb_frame">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link> -->
+
+  <joint name="camera_depth_joint" type="fixed">
+    <origin xyz="0 0.011 0" rpy="0 0 0"/>
+    <parent link="camera_link"/>
+    <child link="camera_depth_frame"/>
+  </joint>
+
+  <link name="camera_depth_frame">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <joint name="camera_depth_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+    <parent link="camera_depth_frame"/>
+    <child link="camera_depth_optical_frame"/>
+  </joint>
+
+  <link name="camera_depth_optical_frame">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <joint name="camera_rgb_joint" type="fixed">
+    <origin xyz="0 -0.012 0" rpy="0 0 0"/>
+    <parent link="camera_link"/>
+    <child link="camera_rgb_frame"/>
+  </joint>
+
+  <link name="camera_rgb_frame">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <joint name="camera_rgb_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+    <parent link="camera_rgb_frame"/>
+    <child link="camera_rgb_optical_frame"/>
+  </joint>
+
+  <link name="camera_rgb_optical_frame">
+    <inertial>
+      <mass value="0.001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+  <!-- END kinect -->
+
+  <!-- BEGIN YDLIDAR -->
+  <joint name="ydlidar_joint" type="fixed">
+    <axis xyz="0 1 0"/>
+    <origin xyz=" 0.0 0 0.73" rpy="0 0 0"/>
+    <parent link="top_plate"/>
+    <child link="base_laser"/>
+  </joint>
+
+  <link name="base_laser">
+    <inertial>
+      <origin xyz="-0.00029774 0.0066667 0.00013047" rpy="0 0 0"/>
+      <mass value="0.15717"/>
+      <inertia ixx="6.7885E-05" ixy="-1.3987E-07" ixz="-8.1554E-07" iyy="0.00013173" iyz="-9.0932E-08" izz="7.1972E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://vribot_description/meshes/sensors/ydlidar.dae"/>
+      </geometry>
+      <material name="ydlidarBlue">
+        <color rgba="0.64706 0.61961 0.58824 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://vribot_description/meshes/sensors/ydlidar.dae"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="laser_frame">
+    <inertial>
+      <origin xyz="-0.00036659 0.00064155 -0.00027052" rpy="0 0 0"/>
+      <mass value="0.25482"/>
+      <inertia ixx="8.9194E-05" ixy="1.8116E-07" ixz="3.6435E-08" iyy="0.00018279" iyz="2.423E-07" izz="0.00011103"/>
+    </inertial>
+  </link>
+
+  <joint name="laser_joint" type="fixed">
+    <origin xyz="0 0 0.03172" rpy="0 0 0"/>
+    <parent link="base_laser"/>
+    <child link="laser_frame"/>
+    <axis xyz="0 0 0"/>
+  </joint>
+  <!-- END YDLIDAR -->
+
+  <!-- BEGIN BODY_FRAME -->
+  <joint name="top_plate_body_frame_joint" type="fixed">
+    <origin xyz=" 0.0 0.0 0.33 " rpy="0 0 0"/>
+    <parent link="top_plate"/>
+    <child link="body_frame"/>
+  </joint>
+
+  <link name="body_frame">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.2 0.2 0.6"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2 0.2 0.6"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="box_sensor_frame">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.12"/>
+      </geometry>
+      <material name="boxBlack">
+        <color rgba="0.0 0.0 0.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.3 0.3 0.125"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="body_frame_box_sensor_frame_joint" type="fixed">
+    <origin xyz=" 0.0 0.0 0.3 " rpy="0 0 0"/>
+    <parent link="body_frame"/>
+    <child link="box_sensor_frame"/>
+  </joint>
+  <!-- END BODY_FRAME -->
+
+  <!-- BEGIN FAKE front_sonar -->
+  <link name="sonar_fake">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="sonar_to_sonar_fake" type="fixed">
+    <origin rpy="0 0 0" xyz="-0.035 0.0 0.035"/>
+    <parent link="sonar"/>
+    <child link="sonar_fake"/>
+  </joint>
+  <!-- END FAKE front_sonar -->
+
+</robot>

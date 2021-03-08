@@ -1,0 +1,39 @@
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base_footprint
+  update_frequency: 5.0
+  publish_frequency: 3.0
+  static_map: false
+  rolling_window: true
+  width: 3.0
+  height: 3.0
+  resolution: 0.05
+  max_obstacle_height: 1.0
+  plugins:
+      - {name: obstacle_layer_laser, type: "costmap_2d::VoxelLayer"}
+      - {name: obstacle_layer_sonar, type: "costmap_2d::VoxelLayer"}
+      - {name: obstacle_layer_kinect, type: "costmap_2d::VoxelLayer"}
+      - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+
+  obstacle_layer_kinect:
+    observation_sources: kinect
+    # kinect: {sensor_frame: camera_link, data_type: PointCloud2, topic: camera/depth/points, marking: true, clearing: true, min_obstacle_height: 0.2}
+    kinect: {sensor_frame: camera_link, data_type: PointCloud2, topic: /gibson_ros/camera/depth/points, marking: true, clearing: true, min_obstacle_height: 0.2}
+    # kinect: {sensor_frame: camera_link, data_type: PointCloud2, topic: /vribot/camera_kinect/camera/depth/points, marking: true, clearing: true, min_obstacle_height: 0.2}
+
+  obstacle_layer_sonar:
+    observation_sources: p3dx_sonar
+    p3dx_sonar: {sensor_frame: front_sonar, data_type: PointCloud2, topic: /RosAria/sonar_pointcloud2, marking: true, clearing: true, obstacle_range: 2.0, raytrace_range: 5.0, min_obstacle_height: 0.2}
+
+  obstacle_layer_laser:
+    observation_sources: ydlidar_x4
+    # ydlidar_x4: {sensor_frame: laser_frame, data_type: LaserScan, topic: /scan, marking: true, clearing: true, obstacle_range: 10.0, raytrace_range: 12.0, inf_is_valid: true}
+    ydlidar_x4: {sensor_frame: laser_frame, data_type: LaserScan, topic: /gibson_ros/lidar/scan, marking: true, clearing: true, obstacle_range: 10.0, raytrace_range: 12.0, inf_is_valid: true}
+
+  inflation_layer:
+  #   # inflation_radius: 1.75
+  #   # inflation_radius: 0.2
+    inflation_radius: 2.0
+    cost_scaling_factor: 5.0
+  #   # cost_scaling_factor: 2.58
+  #   # cost_scaling_factor: 1.29

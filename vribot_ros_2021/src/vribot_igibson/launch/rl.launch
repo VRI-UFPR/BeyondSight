@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- <arg name="gui_mode" default="headless"/> -->
+  <arg name="gui_mode" default="gui"/>
+
+  <!-- <node pkg="vribot_description" type="compile_urdf.sh" name="vribot_description_compiler"> <param name="cmd" value="'$(find vribot_description)/compile_urdf.sh'"/> </node> -->
+
+  <!-- <param name="site_description" command="xacro '$(find vribot_description)/urdf/vribot.xacro' > '$(find vribot_description)/vribot.urdf'" /> -->
+
+  <!-- gibson2 -->
+  <node name="vribot_gibson_sim" pkg="gibson2-ros" type="vribot_rgbd_rl.py" output="screen">
+    <param name="gui_mode" value="$(arg gui_mode)"/>
+  </node>
+  <!-- gibson2 -->
+
+  <param name="robot_description" command="xacro '$(find vribot_description)/urdf/vribot.xacro'"/>
+  <rosparam command="load" file="$(find vribot_control)/config/vribot_control.yaml"/>
+
+  <!-- FOR SIMULATION -->
+  <!-- <node name="laser_to_pointcloud2" pkg="laser_to_pointcloud2" type="laser_to_pointcloud2"/> -->
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"></node>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find vribot_description)/urdf/vribot.xacro'"/>
+  </node>
+
+  <!-- Nodelet manager for this pipeline -->
+  <node pkg="nodelet" type="nodelet" args="manager" name="standalone_nodelet" output="screen"/>
+
+  <!-- Convert to point cloud -->
+  <node pkg="nodelet" type="nodelet" name="depth_image_proc" args="load depth_image_proc/point_cloud_xyzrgb standalone_nodelet" output="screen">
+    <remap from="rgb/camera_info" to="/gibson_ros/camera/depth/camera_info"/>
+    <remap from="rgb/image_rect_color" to="/gibson_ros/camera/rgb/image"/>
+    <remap from="depth_registered/image_rect" to="/gibson_ros/camera/depth/image_raw"/>
+    <remap from="depth_registered/points" to="/gibson_ros/camera/depth/points"/>
+  </node>
+
+  <!-- Construct point cloud of the rgb and depth topics -->
+  <!-- depth_image_proc/point_cloud_xyz -->
+
+  <!-- for gt -->
+  <!-- <node name="vribot_gibson_sim_gt" pkg="gibson2-ros" type="publish_true_map_to_odom_tf.py" output="screen"> </node> -->
+
+</launch>

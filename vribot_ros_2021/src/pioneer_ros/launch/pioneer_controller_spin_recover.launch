@@ -1,0 +1,27 @@
+<launch>
+  <!-- Robot controller parameters -->
+  <node pkg="pioneer_ros" type="pioneer_pid_controller" name="pioneer_ros">
+    <rosparam file="$(find pioneer_ros)/pioneer_controller_params.yaml" command="load"/>
+
+    <!-- iGibson -->
+    <remap from="/cmd_vel_sub" to="/controller_cmd_vel"/>
+    <remap from="/cmd_vel" to="/mobile_base/commands/velocity"/>
+
+    <!-- <remap from="/mobile_base/commands/velocity" to="cmd_vel"/> -->
+    <!-- <remap from="/cmd_vel" to="controller_cmd_vel"/> -->
+
+  </node>
+
+  <node pkg="pioneer_ros" type="move_base_recover" name="move_base_recover" output="screen">
+    <!-- <remap from="controller_cmd_vel" to="/mobile_base/commands/velocity"/> -->
+    <remap from="controller_cmd_vel" to="/controller_cmd_vel"/>
+    <remap from="pioneer/cmd_vel" to="/mobile_base/commands/velocity"/>
+
+
+    <!-- <remap from="/cmd_vel" to="/mobile_base/commands/velocity"/> -->
+  </node>
+
+  <!-- <remap from="/cmd_vel" to="controller_cmd_vel"/> -->
+
+  <!-- <node pkg="pioneer_ros" type="turn_robot_around.py" name="turn_robot_around"/>-->
+</launch>

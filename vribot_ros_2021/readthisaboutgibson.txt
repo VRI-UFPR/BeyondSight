@@ -1,0 +1,9 @@
+If you use annaconda for setting up python environment, some tweaks of PATH and PYTHONPATH variable are required to avoid conflict. In particular:
+
+    For PATH: conda related needs to be removed from PATH
+
+echo $PATH | grep -oP "[^:;]+" | grep conda	## Remove these paths from $PATH
+
+    For PYTHONPATH: /usr/lib/python2.7/dist-packages/, /opt/ros/kinetic/lib/python2.7/dist-packages(ros python libraries), <anaconda installation root>/anaconda2/envs/py27/lib/python2.7/site-packages(gibson dependencies) and <gibson root> need to be in PYTHONPATH.
+
+

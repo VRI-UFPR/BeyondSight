@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- properties (constants) -->
+  <xacro:property name="ns" value="vribot" />
+
+  <!-- ros_control plugin -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/${ns}</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <!-- base_link -->
+	<gazebo reference="base_link">
+		<material>Gazebo/Red</material>
+	</gazebo>
+
+  <!-- top_plate -->
+  <gazebo reference="top_plate">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- swivel -->
+  <gazebo reference="swivel">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+
+  <!-- center_hubcap -->
+	<gazebo reference="center_hubcap">
+		<material>Gazebo/Grey</material>
+	</gazebo>
+
+  <!-- center_wheel -->
+	<gazebo reference="center_wheel">
+		<material>Gazebo/Black</material>
+		<mu1>10.0</mu1>
+		<mu2>10.0</mu2>
+		<kp>1000000.0</kp>
+		<kd>1.0</kd>
+	</gazebo>
+
+  <!-- front_sonar -->
+  <gazebo reference="front_sonar">
+    <material value="Gazebo/Yellow" />
+  </gazebo>
+
+  <!-- differential drive -->
+  <gazebo>
+      <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>100</updateRate>
+        <leftJoint>base_left_wheel_joint</leftJoint>
+        <rightJoint>base_right_wheel_joint</rightJoint>
+        <torque>5</torque>
+        <wheelSeparation>0.39</wheelSeparation>
+        <wheelDiameter>0.15</wheelDiameter>
+        <commandTopic>/cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <!-- <odometryTopic>odom_sim</odometryTopic> -->
+        <odometryFrame>odom</odometryFrame>
+        <odometrySource>world</odometrySource>
+        <robotBaseFrame>base_link</robotBaseFrame>
+        <publishTf>true</publishTf>
+        <publishOdomTF>true</publishOdomTF>
+        <publishWheelTF>true</publishWheelTF>
+        <publishWheelJointState>true</publishWheelJointState>
+        <wheelAcceleration>0</wheelAcceleration>
+        <wheelTorque>5</wheelTorque>
+        <rosDebugLevel>na</rosDebugLevel>
+        <legacyMode>true</legacyMode>
+      </plugin>
+  </gazebo>
+
+  <!-- ground truth -->
+	<gazebo>
+		<plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+			<alwaysOn>true</alwaysOn>
+			<updateRate>100.0</updateRate>
+			<bodyName>base_link</bodyName>
+			<topicName>${ns}/base_pose_ground_truth</topicName>
+			<!-- <gaussianNoise>0.01</gaussianNoise> -->
+			<frameName>map</frameName>
+			<!-- initialize odometry for fake localization -->
+			<xyzOffsets>0 0 0</xyzOffsets>
+			<rpyOffsets>0 0 0</rpyOffsets>
+		</plugin>
+	</gazebo>
+
+</robot>
