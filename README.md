@@ -1,10 +1,13 @@
 # BeyondSight
-Code for the Master's thesis: "Beyond sight: an approach for visual semantic navigation of mobile robots in an indoor environment"
+Code for the Master's thesis: ["Beyond sight: an approach for visual semantic navigation of mobile robots in an indoor environment"](https://www.researchgate.net/publication/350289808_Beyond_sight_an_approach_for_visual_semantic_navigation_of_mobile_robots_in_an_indoor_environment
+)
+
+The full text is publicly available at: https://www.researchgate.net/publication/350289808_Beyond_sight_an_approach_for_visual_semantic_navigation_of_mobile_robots_in_an_indoor_environment
 
 # Disclaimer
 The code here hosted still need some major clean up. It contains code from another repositories and original code made by me.
 
-I divided the pertinent code per branches, vribot_habitat_2020 and vribot_igibson_2020. The code is structured to generate a Docker image with all necessary dependencies to run the experiments. Keep in mind that the module for handling GPUs of Docker is necessary. The datasets are not included in this repository nor it shall be included, for access to Gibson dataset refer to https://github.com/StanfordVL/GibsonEnv/blob/master/gibson/data/README.md and for access to Matterport3D refer to https://niessner.github.io/Matterport/ The COCO classes notations of https://github.com/StanfordVL/3DSceneGraph are necessary for semantics of Gibson.
+I divided the pertinent code per branches, **vribot_habitat_2020** and **vribot_igibson_2020**. The code is structured to generate a Docker image with all necessary dependencies to run the experiments. Keep in mind that the module for handling GPUs of Docker is necessary. The datasets are not included in this repository nor it shall be included, for access to Gibson dataset refer to https://github.com/StanfordVL/GibsonEnv/blob/master/gibson/data/README.md and for access to Matterport3D refer to https://niessner.github.io/Matterport/ The COCO classes notations of https://github.com/StanfordVL/3DSceneGraph are necessary for semantics of Gibson.
 
 For code related to YOLACT++ please refer to https://github.com/dbolya/yolact
 For code related to Habitat https://github.com/facebookresearch/habitat-lab
