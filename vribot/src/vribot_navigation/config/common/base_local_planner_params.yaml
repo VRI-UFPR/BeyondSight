@@ -1,0 +1,41 @@
+TrajectoryPlannerROS:
+  #1.2 meter real max but 0.3 for safety
+  max_vel_x: 0.3
+  min_vel_x: -0.1
+
+  max_vel_theta: 1.0
+  min_in_place_vel_theta: 0.2
+
+  acc_lim_x: 2.5
+  acc_lim_y: 2.5
+  acc_lim_theta: 3.2
+
+  holonomic_robot: false
+
+  #default value in meters
+  # xy_goal_tolerance: 0.20
+  xy_goal_tolerance: 0.05
+
+  #default value in rads
+  # yaw_goal_tolerance: 0.05
+
+  #28.6479 degree -> 0.5 rads
+  #57.2958 degree -> 1.0 rads
+  # yaw_goal_tolerance: 1.0
+
+  #179.995 degree, basically does not care about final pose
+  # yaw_goal_tolerance: 3.1415
+  # yaw_goal_tolerance: 1.5
+  yaw_goal_tolerance: 0.5
+
+  sim_granularity: 0.025
+  sim_time: 2.0
+  meter_scoring: true
+  pdist_scale: 0.9
+  gdist_scale: 0.6
+
+
+  # By maximizing solely the clearance and the velocity, the robot would always travel into free space but there would be no incentive to move towards a goal location. By solely maximizing the target heading the robot quickly would get stopped by the first obstacle that blocks its way, unable to move around it.
+  path_distance_bias: 1.0
+  goal_distance_bias: 0.8
+  occdist_scale: 0.01

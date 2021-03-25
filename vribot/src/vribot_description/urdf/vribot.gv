@@ -1,0 +1,53 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"sonar" [label="sonar"];
+"p3dx_left_wheel" [label="p3dx_left_wheel"];
+"p3dx_left_hubcap" [label="p3dx_left_hubcap"];
+"p3dx_right_wheel" [label="p3dx_right_wheel"];
+"p3dx_right_hubcap" [label="p3dx_right_hubcap"];
+"swivel" [label="swivel"];
+"center_wheel" [label="center_wheel"];
+"center_hubcap" [label="center_hubcap"];
+"top_plate" [label="top_plate"];
+"camera_link" [label="camera_link"];
+"camera_depth_frame" [label="camera_depth_frame"];
+"camera_depth_optical_frame" [label="camera_depth_optical_frame"];
+"camera_rgb_frame" [label="camera_rgb_frame"];
+"camera_rgb_optical_frame" [label="camera_rgb_optical_frame"];
+"base_footprint" [label="base_footprint"];
+"laser_frame" [label="laser_frame"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_front_joint" [label="xyz: 0.109 0 0.209 \nrpy: 0 -0 0"]
+"base_front_joint" -> "sonar"
+"base_link" -> "base_left_wheel_joint" [label="xyz: 0 0.158 0.091 \nrpy: 0 -0 0"]
+"base_left_wheel_joint" -> "p3dx_left_wheel"
+"p3dx_left_wheel" -> "base_left_hubcap_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_left_hubcap_joint" -> "p3dx_left_hubcap"
+"base_link" -> "base_right_wheel_joint" [label="xyz: 0 -0.158 0.091 \nrpy: 0 -0 0"]
+"base_right_wheel_joint" -> "p3dx_right_wheel"
+"p3dx_right_wheel" -> "base_right_hubcap_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_right_hubcap_joint" -> "p3dx_right_hubcap"
+"base_link" -> "base_swivel_joint" [label="xyz: -0.185 0 0.055 \nrpy: 0 -0 0"]
+"base_swivel_joint" -> "swivel"
+"swivel" -> "swivel_hubcap_joint" [label="xyz: -0.026 0 -0.016 \nrpy: 0 -0 0"]
+"swivel_hubcap_joint" -> "center_wheel"
+"center_wheel" -> "center_wheel_joint" [label="xyz: -0.0035 0 -0.001 \nrpy: 0 -0 0"]
+"center_wheel_joint" -> "center_hubcap"
+"base_link" -> "base_top_joint" [label="xyz: -0.045 0 0.234 \nrpy: 0 -0 0"]
+"base_top_joint" -> "top_plate"
+"top_plate" -> "top_plate_to_camera_link_joint" [label="xyz: 0.15 0 0.62 \nrpy: 0 0.226893 0"]
+"top_plate_to_camera_link_joint" -> "camera_link"
+"camera_link" -> "camera_depth_joint" [label="xyz: 0 0.011 0 \nrpy: 0 -0 0"]
+"camera_depth_joint" -> "camera_depth_frame"
+"camera_depth_frame" -> "camera_depth_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -5.55112e-17 -1.5708"]
+"camera_depth_optical_joint" -> "camera_depth_optical_frame"
+"camera_link" -> "camera_rgb_joint" [label="xyz: 0 -0.012 0 \nrpy: 0 -0 0"]
+"camera_rgb_joint" -> "camera_rgb_frame"
+"camera_rgb_frame" -> "camera_rgb_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.5708 -5.55112e-17 -1.5708"]
+"camera_rgb_optical_joint" -> "camera_rgb_optical_frame"
+"top_plate" -> "ydlidar_joint" [label="xyz: 0.03 0.25 0.74 \nrpy: 0 0 -1.48353"]
+"ydlidar_joint" -> "base_footprint"
+"base_footprint" -> "laser_joint" [label="xyz: 0 0 0.03172 \nrpy: 0 -0 0"]
+"laser_joint" -> "laser_frame"
+}

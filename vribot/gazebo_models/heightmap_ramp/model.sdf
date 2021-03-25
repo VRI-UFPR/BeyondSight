@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+
+    <model name="heightmap_ramp">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <heightmap>
+              <uri>model://heightmap_ramp/materials/textures/heightmap_ramp.png</uri>
+              <size>5 5 0.5</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </collision>
+        <visual name="visual_abcedf">
+          <geometry>
+            <heightmap>
+              <use_terrain_paging>false</use_terrain_paging>
+              <texture>
+                <diffuse>model://heightmap_ramp/materials/textures/dirt_diffusespecular.png</diffuse>
+                <normal>model://heightmap_ramp/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>model://heightmap_ramp/materials/textures/grass_diffusespecular.png</diffuse>
+                <normal>model://heightmap_ramp/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <texture>
+                <diffuse>model://heightmap_ramp/materials/textures/fungus_diffusespecular.png</diffuse>
+                <normal>model://heightmap_ramp/materials/textures/flat_normal.png</normal>
+                <size>1</size>
+              </texture>
+              <blend>
+                <min_height>2</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <blend>
+                <min_height>4</min_height>
+                <fade_dist>5</fade_dist>
+              </blend>
+              <uri>model://heightmap_ramp/materials/textures/heightmap_ramp.png</uri>
+              <size>5 5 0.5</size>
+              <pos>0 0 0</pos>
+            </heightmap>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+</sdf>

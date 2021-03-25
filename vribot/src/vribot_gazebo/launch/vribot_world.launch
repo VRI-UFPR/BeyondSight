@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <arg name="world" default="empty"/>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- <arg name="world_name" value="$(find vribot_gazebo)/worlds/basic.world"/> -->
+    <arg name="world_name" value="$(find vribot_gazebo)/worlds/basic_uneven_with_cones.world"/>
+    <!-- <arg name="world_name" value="$(find vribot_gazebo)/worlds/turtlebot_playground.world"/> -->
+    <!-- <arg name="world_name" value="$(find vribot_gazebo)/worlds/turtlebot3_world.world"/> -->
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+
+  <param name="robot_description" command="xacro '$(find vribot_description)/urdf/vribot.xacro'"/>
+
+  <!-- <node name="vribot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+   args="-urdf -param robot_description -model vribot -x 1.8 -y -0.01 -Y 3.141592654" /> -->
+
+  <!-- <node name="vribot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model vribot -x 0.0 -y 0.0 -z 0.2 -Y 0.0"/> -->
+
+  <node name="vribot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model vribot -x -1.0 -y -1.0 -z 0.2 -Y 0.0"/>
+
+  <!-- <node name="vribot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
+   args="-urdf -param robot_description -model vribot" /> -->
+
+  <!-- ydlidar rotate -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser4"
+     args="0.2245 0.0 0.2 0.0 0.0  0.0 /base_footprint /laser_frame 40" /> -->
+
+  <!-- Launch kinect and depthimage_to_laser node -->
+  <!-- <include file="$(find pioneer_utils)/sensors/kinect_to_laser_low.launch"/> -->
+
+  <!-- Launch kinect and depthimage_to_laser node -->
+  <!-- <include file="$(find pioneer_utils)/sensors/kinect_to_laser_long.launch"/> -->
+
+  <!-- Launch kinect and depthimage_to_laser node -->
+  <!-- <include file="$(find pioneer_utils)/sensors/kinect_to_laser.launch"/> -->
+
+  <rosparam command="load" file="$(find vribot_control)/config/vribot_control.yaml" />
+
+</launch>

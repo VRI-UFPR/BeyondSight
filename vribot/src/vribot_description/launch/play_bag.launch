@@ -1,0 +1,24 @@
+<launch>
+  <arg name="bag_file" default="$(find vribot_description)/bags/_2019-09-14-01-16-21.bag"/>
+  <arg name="delay"    default="0.0"/>
+  <arg name="rate"     default="5.0"/>
+
+  <!-- <arg name="image_topic"  default="/camera/rgb/image_rect_color"/>
+  <arg name="depth_topic"  default="/camera/depth_registered/image_raw"/> -->
+
+  <!-- <remap from="rgb/image"       to="/camera/rgb/image_rect_color"/>
+  <remap from="depth/image"     to="/camera/depth_registered/image_raw"/>
+  <remap from="rgb/camera_info" to="/camera/rgb/camera_info"/> -->
+
+  <!-- <include file="$(find turtlebot3_slam_3d)/launch/publish_model.launch"/> -->
+
+  <node name="rosbag_play" pkg="rosbag" type="play" args="$(arg bag_file) --clock -r $(arg rate) -d $(arg delay) /rgbd_image:=/rgbd_image_dev_null">
+  </node>
+
+  <!-- <node name="republish" type="republish" pkg="image_transport" output="screen"
+        args="compressed in:=$(arg image_topic) raw out:=$(arg image_topic)"/>
+
+  <node name="republish_depth" type="republish" pkg="image_transport" output="screen"
+        args="compressedDepth in:=$(arg depth_topic) raw out:=$(arg depth_topic)"/> -->
+
+</launch>

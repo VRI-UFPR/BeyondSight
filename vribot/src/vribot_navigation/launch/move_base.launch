@@ -1,0 +1,15 @@
+<launch>
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find vribot_navigation)/config/common/costmap_common_params_p3dx.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find vribot_navigation)/config/common/costmap_common_params_p3dx.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find vribot_navigation)/config/common/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find vribot_navigation)/config/global_navigation/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find vribot_navigation)/config/common/base_local_planner_params.yaml" command="load"/>
+    <rosparam file="$(find vribot_navigation)/config/common/global_planner_params.yaml" command="load" />
+    <rosparam file="$(find vribot_navigation)/config/common/recovery_behaviors.yaml" command="load" />
+    <rosparam>
+        planner_frequency: 1.0
+    </rosparam>
+    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
+  </node>
+</launch>
