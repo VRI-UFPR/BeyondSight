@@ -7,7 +7,10 @@ The full text is publicly available at: https://www.researchgate.net/publication
 # Disclaimer
 The code here hosted still need some major clean up. It contains code from another repositories and original code made by me.
 
-I divided the pertinent code per branches, **vribot_habitat_2020** and **vribot_igibson_2020**. The code is structured to generate a Docker image with all necessary dependencies to run the experiments. Keep in mind that the module for handling GPUs of Docker is necessary. The datasets are not included in this repository nor it shall be included, for access to Gibson dataset refer to https://github.com/StanfordVL/GibsonEnv/blob/master/gibson/data/README.md and for access to Matterport3D refer to https://niessner.github.io/Matterport/ The COCO classes notations of https://github.com/StanfordVL/3DSceneGraph are necessary for semantics of Gibson.
+I divided the pertinent code per branches, **vribot_gazebo_2020**, **vribot_habitat_2020**, and **vribot_igibson_2020**. 
+The **vribot_gazebo_2020** is structured to be akin to a ROS catkin workspace and compatible with Gazebo simulator, no docker or dataset is necessary.
+
+For the habitat and igibson the code is structured to generate a Docker image with all necessary dependencies to run the experiments. Keep in mind that the module for handling GPUs of Docker is necessary. The datasets are not included in this repository nor it shall be included, for access to Gibson dataset refer to https://github.com/StanfordVL/GibsonEnv/blob/master/gibson/data/README.md and for access to Matterport3D refer to https://niessner.github.io/Matterport/ The COCO classes notations of https://github.com/StanfordVL/3DSceneGraph are necessary for semantics of Gibson.
 
 For code related to YOLACT++ please refer to https://github.com/dbolya/yolact
 For code related to Habitat https://github.com/facebookresearch/habitat-lab
@@ -28,3 +31,6 @@ For code related to iGibson https://github.com/StanfordVL/iGibson/
 
 * Qualitative results of BEyond Complete https://youtu.be/qt5hHwG4ZAM 
 [![](http://img.youtube.com/vi/qt5hHwG4ZAM/0.jpg)](http://www.youtube.com/watch?v=qt5hHwG4ZAM "")
+
+
+
