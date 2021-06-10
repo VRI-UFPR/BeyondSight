@@ -1,0 +1,81 @@
+BEYOND:
+  DEVICE: "cuda"
+  GLOBAL_POLICY:
+    NEAR_CLIP: 0.1
+    #matterport3D challenge has [0,20] SO LEN 21, so plus bg 22
+    N_CLASSES: 22
+    CELL_MIN_POINT_COUNT: 1.0
+
+    # MAP_SIZE_METERS: 51.2
+    # MAP_CELL_SIZE: 0.10
+
+    MAP_SIZE_METERS: 25.6
+    MAP_CELL_SIZE: 0.05
+
+    # INPUT_SHAPE: [26,256,256]
+    INPUT_SHAPE: [25,256,256]
+    EMBEDDING_SIZE: 8
+    HIDDEN_SIZE: 512
+
+    LOAD_CHECKPOINT: True
+    # LOAD_CHECKPOINT: False
+    # CHECKPOINT: "beyond_agent/checkpoints/GLOBAL_POLICY_180224_matterport2020.pt"
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_rl_overfit_lstm27-03-2021_13-24-30_ckpt.2.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_no_heurist_ddppo_blind18-04-2021_01-27-27/ckpt.0.pth"
+
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_with_heuristic18-04-2021_04-07-20/ckpt.5.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_with_heuristic18-04-2021_14-13-28/ckpt.2.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_with_heuristic18-04-2021_17-21-00/ckpt.0.pth"
+
+
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_with_heuristic18-04-2021_23-24-54/ckpt.3.pth"
+
+    #around 0.80 success
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_with_heuristic_sparse_reward20-04-2021_06-04-01/ckpt.8.pth"
+
+    #around 0.95 success
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_with_heuristic_sparse_reward20-04-2021_06-04-01/ckpt.9.pth"
+
+    # CHECKPOINT: "beyond_agent/checkpoints/ckpt.best_success_0_006622516556291391.pth"
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_rl_habitat_with_sseg_yolact_train_all_scenes_polar11-05-2021_21-09-37_ckpt.7.pth"
+    CHECKPOINT: "beyond_agent/checkpoints/beyond_rl_habitat_with_sseg_yolact_train_all_scenes_polar12-05-2021_13-04-52_ckpt.best_reward.pth"
+
+    #last used
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_v002_habitat_with_sseg_gt21-04-2021_20-27-16/ckpt.10.pth"
+
+
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_dungeon_no_heurist_ddppo_blind17-04-2021_17-16-15/ckpt.7.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_circle_no_heurist_ddppo_blind17-04-2021_20-45-47/ckpt.1.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_dungeon17-04-2021_04-42-45/ckpt.11.pth"
+
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv_dungeon16-04-2021_20-49-34/ckpt.0.pth"
+
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv14-04-2021_15-34-26/ckpt.last.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv14-04-2021_17-48-34/ckpt.last.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv14-04-2021_21-59-36/ckpt.1.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv14-04-2021_21-59-36/ckpt.2.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv14-04-2021_21-59-36/ckpt.last.pth"
+
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv15-04-2021_16-25-54/ckpt.1.pth"
+    # CHECKPOINT: "habitat-challenge-data/checkpoints/beyond_rl_semanticEnv15-04-2021_23-12-32/ckpt.last.pth"
+
+    # CHECKPOINT: "beyond_agent/checkpoints/beyond_with_sseg_oracle_habitat_challenge09-12-2020_11-15-57/{REPLACE}.pt"
+  PLANNER:
+    LOAD_CHECKPOINT: True
+    CHECKPOINT: "beyond_agent/checkpoints/ddppo_pointnav_habitat2020_challenge_baseline_v1.pth"
+    #blind mode
+    # CHECKPOINT: "beyond_agent/checkpoints/gibson-0plus-mp3d-train-val-test-blind.pth"
+  SSEG:
+    DISPLAY_LINCOMB: False
+    # SCORE_THRESHOLD: 0.15
+    SCORE_THRESHOLD: 0.55
+    CROP_MASK: True
+    BINARIZE_MASKS: False
+    LOAD_CHECKPOINT: True
+    # CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_54_800000.pth"
+    # CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_3_175000_interrupt.pth"
+    # CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_848_185000_interrupt.pth"
+    # CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_871_190000_interrupt.pth"
+    # CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_905_197500.pth"
+    # CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_12_80000.pth"
+    CHECKPOINT: "beyond_agent/checkpoints/yolact_plus_resnet50_24_160000_interrupt.pth"

@@ -1,0 +1,2 @@
+#Download the weigths beyond_rl_habitat_with_sseg_yolact_train_all_scenes_polar12-05-2021_13-04-52_ckpt.best_reward.pth , beyond_rl_habitat_with_sseg_yolact_train_all_scenes_polar12-05-2021_13-04-52_ckpt.best_reward.pth , yolact_plus_resnet50_24_160000_interrupt.pth at
+https://drive.google.com/drive/folders/1GSsdKsWjZ2A7qP1VCZH7OBzDT21bc0bO?usp=sharing

@@ -1,0 +1,220 @@
+{
+  'ac26ZMwG7aT': {
+    'chair': {
+      'count': 1,
+      'geo_mean': 1.41227,
+      'euc_mean': 1.41227,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 12.0,
+      'path_std': 0.0
+    },
+    'table': {
+      'count': 1,
+      'geo_mean': 1.94433,
+      'euc_mean': 1.94433,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 16.0,
+      'path_std': 0.0
+    },
+    'picture': {
+      'count': 1,
+      'geo_mean': 1.37624,
+      'euc_mean': 1.37624,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 13.0,
+      'path_std': 0.0
+    },
+    'cabinet': {
+      'count': 1,
+      'geo_mean': 1.35804,
+      'euc_mean': 0.91737,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 18.0,
+      'path_std': 0.0
+    },
+    'cushion': {
+      'count': 1,
+      'geo_mean': 2.44189,
+      'euc_mean': 2.26875,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 18.0,
+      'path_std': 0.0
+    },
+    'sofa': {
+      'count': 1,
+      'geo_mean': 1.88949,
+      'euc_mean': 1.8879,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 13.0,
+      'path_std': 0.0
+    },
+    'bed': {
+      'count': 1,
+      'geo_mean': 1.97769,
+      'euc_mean': 1.97769,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 16.0,
+      'path_std': 0.0
+    },
+    'chest_of_drawers': {
+      'count': 1,
+      'geo_mean': 8.98494,
+      'euc_mean': 7.14068,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 50.0,
+      'path_std': 0.0
+    },
+    'plant': {
+      'count': 1,
+      'geo_mean': 1.64005,
+      'euc_mean': 1.64005,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 14.0,
+      'path_std': 0.0
+    },
+    'sink': {
+      'count': 1,
+      'geo_mean': 1.97878,
+      'euc_mean': 1.79544,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 21.0,
+      'path_std': 0.0
+    },
+    'toilet': {
+      'count': 1,
+      'geo_mean': 4.53842,
+      'euc_mean': 2.17412,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 42.0,
+      'path_std': 0.0
+    },
+    'stool': {
+      'count': 1,
+      'geo_mean': 1.9306,
+      'euc_mean': 1.85223,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 22.0,
+      'path_std': 0.0
+    },
+    'towel': {
+      'count': 1,
+      'geo_mean': 1.0318,
+      'euc_mean': 1.0318,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 7.0,
+      'path_std': 0.0
+    },
+    'tv_monitor': {
+      'count': 1,
+      'geo_mean': 10.34984,
+      'euc_mean': 9.05018,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 78.0,
+      'path_std': 0.0
+    },
+    'shower': {
+      'count': 1,
+      'geo_mean': 1.62589,
+      'euc_mean': 1.62589,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 10.0,
+      'path_std': 0.0
+    },
+    'bathtub': {
+      'count': 1,
+      'geo_mean': 1.63601,
+      'euc_mean': 1.63601,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 11.0,
+      'path_std': 0.0
+    },
+    'counter': {
+      'count': 1,
+      'geo_mean': 1.30865,
+      'euc_mean': 0.9984,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 14.0,
+      'path_std': 0.0
+    },
+    'fireplace': {
+      'count': 1,
+      'geo_mean': 1.09905,
+      'euc_mean': 1.09425,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 19.0,
+      'path_std': 0.0
+    },
+    'gym_equipment': {
+      'count': 1,
+      'geo_mean': 1.44329,
+      'euc_mean': 1.44329,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 12.0,
+      'path_std': 0.0
+    },
+    'seating': {
+      'count': 1,
+      'geo_mean': 1.92232,
+      'euc_mean': 1.92232,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 16.0,
+      'path_std': 0.0
+    },
+    'clothes': {
+      'count': 1,
+      'geo_mean': 7.97121,
+      'euc_mean': 6.19849,
+      'geo_std': 0.0,
+      'euc_std': 0.0,
+      'path_mean': 72.0,
+      'path_std': 0.0
+    },
+    'total_count': 21
+  }
+}
+n_scenes 1
+
+
+{
+  'chair': 1,
+  'table': 1,
+  'picture': 1,
+  'cabinet': 1,
+  'cushion': 1,
+  'sofa': 1,
+  'bed': 1,
+  'chest_of_drawers': 1,
+  'plant': 1,
+  'sink': 1,
+  'toilet': 1,
+  'stool': 1,
+  'towel': 1,
+  'tv_monitor': 1,
+  'shower': 1,
+  'bathtub': 1,
+  'counter': 1,
+  'fireplace': 1,
+  'gym_equipment': 1,
+  'seating': 1,
+  'clothes': 1
+}
