@@ -4,8 +4,8 @@ Code for the Master's thesis: ["Beyond sight: an approach for visual semantic na
 
 The full text is publicly available at: https://www.researchgate.net/publication/350289808_Beyond_sight_an_approach_for_visual_semantic_navigation_of_mobile_robots_in_an_indoor_environment
 
-#UPDATE 2021
-The new branch named **beyond_habitat_challenge_2021** contains the code for our work "BEyond observation: an approach for ObjectNav" to be presented as an extended abstract and poster at [2th Embodied-AI Workshop at CVPR 2021](https://embodied-ai.org/). Checkout the [leaderboard](https://eval.ai/web/challenges/challenge-page/802/leaderboard/2195) for the Habitat Challenge 2021 ObjectNav Test-Standard phase. 
+# UPDATE 2021
+The new branch named **beyond_habitat_challenge_2021** contains the code for our work "BEyond observation: an approach for ObjectNav" to be presented as an extended abstract and poster at [2th Embodied-AI Workshop at CVPR 2021](https://embodied-ai.org/). Checkout the [leaderboard](https://eval.ai/web/challenges/challenge-page/802/leaderboard/2195) for the Habitat Challenge 2021 ObjectNav Test-Standard phase.
 
 # Disclaimer
 The code here hosted still need some major clean up. It contains code from another repositories and original code made by me.
